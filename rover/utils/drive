@@ -1,0 +1,31 @@
+#!/bin/bash
+
+SESSION=acl
+
+# creates the session with a name and renames the window name
+cmd="new-session -d -s $SESSION"
+
+# window number
+w=0
+
+# splits tmux into a 3x2 grid
+cmd="$cmd ; split-window -h"
+cmd="$cmd ; split-window -v"
+cmd="$cmd ; split-window -v"
+cmd="$cmd ; select-pane -t $SESSION:$w.0"
+cmd="$cmd ; split-window -v"
+
+# creates the tmux session
+tmux -2 $cmd
+
+# wait for .bashrc to load
+sleep 1
+
+# send commands to each pane
+#tmux send-keys -t $SESSION:$w.0 "roslaunch purepursuit purepursuit.launch" C-m
+#tmux send-keys -t $SESSION:$w.1 "roslaunch rover rover.launch" C-m
+#tmux send-keys -t $SESSION:$w.2 "rostopic echo /Teensy/status" C-m
+#tmux send-keys -t $SESSION:$w.3 "rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200" C-m
+tmux send-keys -t $SESSION:$w.4 "rosrun joy joy_node" C-m
+
+tmux -2 attach-session -t $SESSION

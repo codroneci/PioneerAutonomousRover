@@ -1,0 +1,12 @@
+# Microsoft Xbox 360 Wireless Controller for Linux
+# http://wiki.ros.org/joy
+
+green : 0
+red : 1
+blue : 2
+yellow : 3
+spin : 7 # What does spin do? Set to "start" button
+slow_trigger : 4
+fast_trigger : 5
+forward : 1
+turn : 2

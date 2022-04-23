@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <arg name="veh" default="RR" />
+  <arg name="num" default="03" />
+  <arg name="cont" default="J1" />
+  <!-- <arg name="dev" default="js0" /> -->
+
+  <group ns="$(arg veh)$(arg num)">
+
+    <!--
+    <node pkg="joy" type="joy_node" name="joystick">
+      <param name="dev" type="string" value="/dev/input/$(arg dev)" />
+    </node>
+    -->
+
+    <node respawn="false" name="rover" pkg="rover" type="rover_node.py" output="screen">
+      <!-- Load parameters -->
+      <rosparam command="load" file="$(find rover)/cfg/$(arg veh)$(arg num).yaml" />
+      <rosparam command="load" file="$(find rover)/cfg/$(arg cont).yaml" />
+
+      <!-- Temporary remapping to fit w firmware -->
+      <remap from="cmd_vel" to="/cmd_vel"/>
+      <remap from="arming" to="/NUC_topic"/>
+
+    </node>
+
+  </group>
+
+</launch>

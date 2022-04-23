@@ -1,0 +1,14 @@
+ang_vel_max : 1.0 # Max angular velocity
+lin_vel_max : 1.0 # Max linear velocity
+ang_acc_max : 2.0 # Max angular acceleration
+lin_acc_max : 2.0 # Max linear acceleration
+# Update these values ^ - they don't make sense right now
+
+low_speed_linear : 0.5 # Scaling factor for low speed mode
+high_speed_linear : 1.0 # Scaling factor for high speed mode
+low_speed_angular : 1.0
+high_speed_angular : 4.0
+
+# ARBITRARILY CHOSEN -- NEED TO FIND ACTUAL TIME CONSTANTS
+lin_time_constant : 0.2 # Linear alpha filter time constant
+ang_time_constant : 0.2 # Angular alpha filter time constant

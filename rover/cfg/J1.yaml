@@ -1,0 +1,9 @@
+green : 0
+red : 1
+blue : 2
+yellow : 3
+spin : 7
+slow_trigger : 4
+fast_trigger : 5
+forward : 1
+turn : 3
